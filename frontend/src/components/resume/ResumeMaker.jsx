@@ -1,27 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../shared/Navbar'
 import { Github, Linkedin, User } from 'lucide-react'
 import ResumeMakerForm from './ResumeMakerForm'
 
 function ResumeMaker() {
+    const [data,setData] = useState({
+        name:"",
+        role:"",
+        github:"",
+        leetcode:"",
+        linkedin:"",
+        portfolio:"",
+        phone:"",
+        education:{}
+    });
+    console.log(data.github)
+
   return (
     <>
     <Navbar/>
-    <div className='mt-20 p-10 flex  justify-center items-center'>
+    <div className='mt-20 p-8 flex  justify-center items-center'>
         <div className='w-[50%] shadow-2xl h-[100svh]'>
-            <ResumeMakerForm/>  
+            <ResumeMakerForm data={data} setData={setData}/>  
         </div>
-        <div className='w-[40%] bg-[#6A38C2] h-[100svh] p-10'>
+        <div className='w-[40%] bg-[#6A38C2] h-[100svh] p-10 pt-5'>
+            <p className='text-white text-center'>Resume</p>
           <div className='h-full w-full  bg-white shadow-md p-1'>
-            <p className='text-center text-[11px]'>SHAIK YASEEN</p> 
-            <p className='text-center text-[8px] pb-1'>Full Stack Developer</p>
+            <p className='text-center text-[11px]'>{data?.name}</p> 
+            <p className='text-center text-[8px] pb-1'>{data?.role}</p>
             <div className='flex justify-around'>
-            <p className='flex text-[8px] justify-center items-center cursor-pointer'>+91-(9177241997)</p>
+            <p className='flex text-[8px] justify-center items-center cursor-pointer'>+91-({data?.phone})</p>
 
-                <p><a href="" target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><Github size={8} strokeWidth={0.5} />Github</a></p>
-                <p><a href="" target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><Linkedin size={8} strokeWidth={0.5} />Linkedin</a></p>
-                <p><a href="" target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><User size={8} strokeWidth={0.5} />Portfolio</a></p>
-                <p><a href="" target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><User size={8} strokeWidth={0.5} />Leetcode</a></p>
+                <p><a href={data?.github} target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><Github size={8} strokeWidth={0.5} />Github</a></p>
+                <p><a href={data?.linkedin} target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><Linkedin size={8} strokeWidth={0.5} />Linkedin</a></p>
+                <p><a href={data?.portfolio} target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><User size={8} strokeWidth={0.5} />Portfolio</a></p>
+                <p><a href={data?.leetcode} target='blank' className='flex text-[8px] justify-center items-center cursor-pointer'><User size={8} strokeWidth={0.5} />Leetcode</a></p>
             </div>
             <div className='pb-1'>
             <p className='text-[11px] pl-1 pt-1 font-bold'>Education</p>
