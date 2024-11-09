@@ -12,7 +12,10 @@ function ResumeMaker() {
         linkedin:"",
         portfolio:"",
         phone:"",
-        education:{}
+        education:{
+          schoolName:"",
+          schoolGrade:""
+        }
     });
     console.log(data.github)
 
@@ -40,8 +43,8 @@ function ResumeMaker() {
             <p className='text-[11px] pl-1 pt-1 font-bold'>Education</p>
             <hr className="text-[5px] border-t-[1px] border-black" />
             <div>
-            <p className='text-[9px] pt-1'><span className='font-semibold'>San Franscisco State University </span><span>- Bachelor's in Computer Science</span></p>
-            <p className='flex text-[6px] justify-between'><span>2005-2009 , Grade :<span className='font-bold'>9.06</span>,</span><span className='pr-2'>Sans Franscisco CA</span></p>
+            <p className='text-[9px] pt-1'><span className='font-semibold'>{data.schoolName}</span></p>
+            <p className='flex text-[6px] justify-between'><span>2005-2009 , Grade :<span className='font-bold'>{data?.schoolGrade}</span>,</span><span className='pr-2'>{data?.schoolPlace}</span></p>
             </div>
             <div>
             <p className='text-[9px] pt-1'><span className='font-semibold'>San Franscisco State University </span><span>- Bachelor's in Computer Science</span></p>
