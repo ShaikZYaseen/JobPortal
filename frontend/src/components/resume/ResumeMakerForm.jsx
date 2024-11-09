@@ -23,7 +23,7 @@ function ResumeMakerForm({data,setData}) {
     <div className='p-5 flex-col justify-center items-center h-[35rem] overflow-y-auto border border-gray-300'>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-        <h1 className='font-bold'>Personal Details :</h1>
+        <h1 className='font-bold'>Your Details :</h1>
         <FormField
           control={form.control}
           name="name"
@@ -156,17 +156,18 @@ function ResumeMakerForm({data,setData}) {
           
         />
         <h1 className='font-bold'>Education Details :</h1>
+        <div className='border-[1px] p-3'>
         <FormField
           control={form.control}
-          name="linkedin"
+          name="schoolName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Linkedin</FormLabel>
+              <FormLabel>School or Primary education</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter your linkedin link.."
+                  placeholder="Enter your school name"
                   onChange={(e) => {
-                    setData((prev) => ({ ...prev, linkedin: e.target.value }));
+                    setData((prev) => ({ ...prev, schoolName: e.target.value }));
                   }}
                 />
               </FormControl>
@@ -174,7 +175,44 @@ function ResumeMakerForm({data,setData}) {
             </FormItem>
           )}
           />
-
+           <FormField
+          control={form.control}
+          name="schoolGrade"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Grade</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Enter your grade"
+                  onChange={(e) => {
+                    setData((prev) => ({ ...prev, schoolGrade: e.target.value }));
+                  }}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+          />
+              <FormField
+          control={form.control}
+          name="schoolPlace"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Place</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Enter your place"
+                  onChange={(e) => {
+                    setData((prev) => ({ ...prev, schoolPlace: e.target.value }));
+                  }}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+          />
+          
+        </div>
         <Button type="submit">Submit</Button>
       </form>
     </Form>
