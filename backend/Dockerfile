@@ -1,21 +1,15 @@
-# Use the official Node.js image as a base
-FROM node:18
-
-# Set the working directory in the container
+FROM node:alpine AS base
 WORKDIR /app
-
-# Copy package.json and package-lock.json to install dependencies
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+EXPOSE 8000
 
-# Copy the rest of the application code to the container
+FROM base AS development
 COPY . .
+RUN npm install
+CMD ["npm", "run", "dev"] # Run in development mode
 
-# Expose the port that the app runs on (e.g., 5000)
-EXPOSE 5000
-
-
-# Start the backend server
-CMD ["npm", "start"]
+FROM base AS production
+COPY . .
+RUN npm install --production
+CMD ["npm","run","start"] # Run in production mode

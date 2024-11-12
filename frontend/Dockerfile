@@ -1,32 +1,36 @@
-# Stage 1: Build the React app with Vite
-FROM node:18 AS builder
-
-# Set the working directory inside the container
+# Stage 1: Base setup for both Development and Production
+FROM node:alpine AS base
 WORKDIR /app
-
-# Copy package.json and package-lock.json to install dependencies
 COPY package*.json ./
 
-# Install dependencies
+# Stage 2: Development setup
+FROM base AS development
 RUN npm install
+COPY . .
+EXPOSE 5173
+CMD ["npm", "run", "dev"] # Run React in development mode with live reloading
 
-# Copy the rest of the application source code
+# Stage 3: Production setup
+FROM base AS production
+WORKDIR /app
+
+# Install Nginx using apk (Alpine package manager)
+RUN apk update && apk add --no-cache nginx
+
+# Install only production dependencies
+RUN npm install --production
+
 COPY . .
 
-# Build the React app for production (creates a /dist directory)
+# Build the React app for production
 RUN npm run build
 
-# Stage 2: Serve the React app with Nginx
-FROM nginx:alpine
-
-# Remove default Nginx static files and add the React build output
+# Remove default nginx content and copy build files into nginx's directory
 RUN rm -rf /usr/share/nginx/html/*
+RUN cp -r build/* /usr/share/nginx/html/
 
-# Copy built files from the previous stage to Nginx HTML directory
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Expose port 80 for the Nginx server
+# Expose port 80 to serve the app via nginx
 EXPOSE 80
 
-# Start Nginx in the foreground to keep the container running
-CMD ["nginx", "-g", "daemon off;"]
+# Start Nginx to serve the app
+CMD ["nginx", "-g", "daemon off;"] # Run Nginx in the foreground to serve the app
