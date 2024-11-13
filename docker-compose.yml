@@ -7,9 +7,10 @@ services:
       dockerfile: Dockerfile
       target: development
     ports:
-      - "3000:5173"
+      - "3000:5173"  
     volumes:
-      - ./Frontend:/app
+      - ./Frontend:/app 
+      - ./Frontend/node_modules:/app/node_modules  
     environment:
       - NODE_ENV=development
     networks:
@@ -21,26 +22,27 @@ services:
       dockerfile: Dockerfile
       target: development
     ports:
-      - "8000:8000"
+      - "8000:8000" 
     volumes:
-      - ./Backend:/app
+      - ./Backend:/app 
+      - ./Backend/node_modules:/app/node_modules  
     environment:
       - NODE_ENV=development
-      - MONGO_URI=mongodb://mongo:27017/mern-db
+      - MONGO_URI=mongodb://mongo:27017/mern-db 
     networks:
       - mern-network
 
   mongo:
     image: mongo:latest
     ports:
-      - "27017:27017"
+      - "27017:27017" 
     volumes:
-      - mongo-data:/data/db
+      - mongo-data:/data/db  
     networks:
       - mern-network
 
 volumes:
-  mongo-data:
+  mongo-data: 
 
 networks:
-  mern-network:
+  mern-network:  

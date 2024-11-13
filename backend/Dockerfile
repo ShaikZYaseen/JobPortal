@@ -1,15 +1,26 @@
 FROM node:alpine AS base
-WORKDIR /app
+
+WORKDIR /app/backend
+
+RUN npm install -g pnpm
+
 COPY package*.json ./
+COPY pnpm-lock.yaml ./
 
 EXPOSE 8000
 
 FROM base AS development
-RUN npm install
+
+RUN pnpm install
+
 COPY . .
-CMD ["npm", "run", "dev"] # Run in development mode
+
+CMD ["pnpm", "run", "dev"]
 
 FROM base AS production
-RUN npm install --production
+
+RUN pnpm install --production
+
 COPY . .
-CMD ["npm","run","start"] # Run in production mode
+
+CMD ["pnpm", "run", "start"]
