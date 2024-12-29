@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon Backend/index.js",
     "dev": "nodemon Backend/index.js",
-    "build":"pnpm install && pnpm install --prefix Frontend && pnpm run build --prefix Frontend"
+"build": "pnpm install && pnpm install --prefix Frontend && pnpm --prefix Frontend run build"
   },
   "author": "",
   "license": "ISC",
