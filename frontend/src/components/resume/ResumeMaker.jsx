@@ -14,6 +14,8 @@ function ResumeMaker() {
     phone: "",
     education: [],
     skills: [],
+    projects:[],
+    experience:[]
   });
 
   return (
@@ -62,7 +64,7 @@ function ResumeMaker() {
               </div>
             }
 
-
+          
             <div>
               <p className='text-[11px] pl-1 pt-1 font-bold'>Experience</p>
               <hr className="text-[5px] border-t-[1px] border-black" />
@@ -73,33 +75,28 @@ function ResumeMaker() {
                 <li className='text-[7px]'>Lorem ipsum dolor sit amet. Lorem, ipsum dolor.</li>
               </div>
             </div>
-            <div>
+
+            {
+              data.projects >0  && 
+                   <div>
               <p className='text-[11px] pl-1 pt-1 font-bold'>Projects</p>
               <hr className="text-[5px] border-t-[1px] border-black mb-1" />
-              <p className='text-[9px] pb-2 font-semibold pl-1 flex-col flex-wrap'>
-                <p className='flex justify-start items-center'> JobPortal - <a href="" className='pl-2' target='blank'><Github size={8} /></a></p>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum?</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum eligendi dolores debitis?</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt vitae quam tenetur, laboriosam totam eligendi.</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem iusto eum dolorum similique non tenetur.</li>
-              </p>
-              <p className='text-[9px] pb-2 font-semibold pl-1 flex-col flex-wrap'>
-                <p className='flex justify-start items-center'> Ecommerce site - <a href="" className='pl-2' target='blank'><Github size={8} /></a></p>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum?</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum eligendi dolores debitis?</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt vitae quam tenetur, laboriosam totam eligendi.</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem iusto eum dolorum similique non tenetur.</li>
-              </p>
-              <p className='text-[9px]  font-semibold pl-1 flex-col flex-wrap'>
-                <p className='flex justify-start items-center'> Devops - <a href="" className='pl-2' target='blank'><Github size={8} /></a></p>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum?</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum eligendi dolores debitis?</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt vitae quam tenetur, laboriosam totam eligendi.</li>
-                <li className='text-[7px]'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem iusto eum dolorum similique non tenetur.</li>
-              </p>
-
-
+              {
+                data.projects.map((ele)=>{
+                  <p className='text-[9px] pb-2 font-semibold pl-1 flex-col flex-wrap'>
+                  <p className='flex justify-start items-center'> {ele.title} - <a href="" className='pl-2' target='blank'><Github size={8} /></a></p>
+                  <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum?</li>
+                  <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum eligendi dolores debitis?</li>
+                  <li className='text-[7px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt vitae quam tenetur, laboriosam totam eligendi.</li>
+                  <li className='text-[7px]'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem iusto eum dolorum similique non tenetur.</li>
+                </p>
+                })
+              }
+              
+             
             </div>
+            }
+          
             <div>
               <p className='text-[11px] pl-1 pt-1 font-bold'>Achievements</p>
               <hr className="text-[5px] border-t-[1px] border-black mb-1" />

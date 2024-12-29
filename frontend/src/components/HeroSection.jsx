@@ -18,6 +18,11 @@ const HeroSection = () => {
     return (
         <div className='text-center flex-col justify-center items-center pt-40'>
             <div className='flex flex-col gap-5 '>
+                <div className='flex justify-center items-center'>
+                    <div className='bg-[#6A38C2] text-white w-1/5 rounded-2xl p-2 text-center'>Ai resume builder soon...</div>
+
+
+                </div>
                 <span className=' mx-auto px-4 py-2 rounded-full bg-gray-100 text-[#6A38C2] font-medium'>No. 1 Job Hunt Website</span>
                 <h1 className='text-5xl font-bold'>Search, Apply & <br /> Get Your <span className='text-[#6A38C2]'>Dream Jobs</span></h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur temporibus nihil tempora dolor!</p>

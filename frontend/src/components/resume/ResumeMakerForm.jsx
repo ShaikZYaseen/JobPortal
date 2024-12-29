@@ -56,6 +56,47 @@ function ResumeMakerForm({ data, setData }) {
     }));
   };
 
+
+  const handleAddProject = () => {
+    if (data.projects.length > 2) {
+      toast.error("You can only add a maximum of three projects");
+      return;
+    }
+    setData((prev) => ({
+      ...prev,
+      projects: [
+        ...(prev.projects || []),
+        { title: "", description: "", bulletPoints: [""] },
+      ],
+    }));
+  };
+  
+  const handleAddBulletPoint = (projectIndex) => {
+    setData((prev) => {
+      const updatedProjects = [...prev.projects];
+      updatedProjects[projectIndex].bulletPoints.push("");
+      return { ...prev, projects: updatedProjects };
+    });
+  };
+  
+  const handleDeleteBulletPoint = (projectIndex, bulletIndex) => {
+    setData((prev) => {
+      const updatedProjects = [...prev.projects];
+      updatedProjects[projectIndex].bulletPoints = updatedProjects[
+        projectIndex
+      ].bulletPoints.filter((_, i) => i !== bulletIndex);
+      return { ...prev, projects: updatedProjects };
+    });
+  };
+  
+  const handleDeleteProject = (index) => {
+    setData((prev) => ({
+      ...prev,
+      projects: prev.projects.filter((_, i) => i !== index),
+    }));
+  };
+  
+
   const handleSubmit = (formData) => {
     console.log("Form Submitted:", formData);
   };
@@ -222,6 +263,75 @@ function ResumeMakerForm({ data, setData }) {
   <Button className="mt-3" onClick={handleAddSkill}>Add skill</Button>
 
   
+</div>
+
+<div>
+<h1 className="font-bold">Projects:</h1>
+<Button onClick={handleAddProject} className="mt-3 mr-3">Add Project</Button>
+{data.projects?.map((project, projectIndex) => (
+  <div key={projectIndex} className="border-[1px] p-3 mb-3 rounded">
+    <span
+      className="flex justify-end cursor-pointer"
+      onClick={() => handleDeleteProject(projectIndex)}
+    >
+      <Trash className="w-4 h-4" />
+    </span>
+
+    {/* Project Title */}
+    <FormField
+      control={form.control}
+      name={`projects[${projectIndex}].title`}
+      render={() => (
+        <FormItem>
+          <FormLabel>Project Title</FormLabel>
+          <FormControl>
+            <Input
+              placeholder="Enter project title"
+              value={project.title}
+              onChange={(e) => {
+                const updatedProjects = [...data.projects];
+                updatedProjects[projectIndex].title = e.target.value;
+                setData((prev) => ({ ...prev, projects: updatedProjects }));
+              }}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+
+    {/* Bullet Points */}
+    <div className=''>
+      <h2 className="font-medium">Content:</h2>
+      {project.bulletPoints.map((bullet, bulletIndex) => (
+        <div key={bulletIndex} className="flex items-center mt-2 space-x-2">
+          <Input
+            placeholder="Enter your content"
+            value={bullet}
+            onChange={(e) => {
+              const updatedProjects = [...data.projects];
+              updatedProjects[projectIndex].bulletPoints[bulletIndex] =
+                e.target.value;
+              setData((prev) => ({ ...prev, projects: updatedProjects }));
+            }}
+            className="flex-1"
+          />
+          <Trash
+            className="w-4 h-4 cursor-pointer"
+            onClick={() => handleDeleteBulletPoint(projectIndex, bulletIndex)}
+          />
+        </div>
+      ))}
+      <Button
+        onClick={() => handleAddBulletPoint(projectIndex)}
+        className="mt-2"
+      >
+        Add Content
+      </Button>
+    </div>
+  </div>
+))}
+
 </div>
 
           <Button type="submit" className="mt-3">Submit</Button>

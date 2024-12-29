@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon Backend/index.js",
+    "dev": "nodemon Backend/index.js",
+    "build":"pnpm install && pnpm install --prefix Frontend && pnpm run build --prefix Frontend"
   },
   "author": "",
   "license": "ISC",
