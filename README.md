@@ -4,28 +4,28 @@
 A Full-stack job portal application built using the MERN stack (MongoDB, Express.js, React, Node.js) with Cloudinary integration for media storage and an AI-powered resume maker. This platform allows users to search for jobs, upload resumes, and generate AI-assisted resumes, making job hunting and applying easier.
 
 # Features : 
-⦿  User Registration & Authentication: Users can register, log in, and manage their profiles.
+•  User Registration & Authentication: Users can register, log in, and manage their profiles.
 
-⦿ Job Listings: Employers can post job openings, and candidates can search and apply for jobs.
+• Job Listings: Employers can post job openings, and candidates can search and apply for jobs.
 
-⦿ Resume Upload: Users can upload their resumes, which are stored securely in Cloudinary.
+• Resume Upload: Users can upload their resumes, which are stored securely in Cloudinary.
 
-⦿ AI Resume Maker: Users can create an AI-powered resume by filling out necessary information (e.g., education, skills, experience). The AI engine helps generate a professional-looking resume.
+• AI Resume Maker: Users can create an AI-powered resume by filling out necessary information (e.g., education, skills, experience). The AI engine helps generate a professional-looking resume.
 
-⦿ Job Search & Filters: Job seekers can search and filter jobs based on title, category, and location.
+• Job Search & Filters: Job seekers can search and filter jobs based on title, category, and location.
 
-⦿ Admin Panel: Admins can manage job postings, user roles, and oversee the job application process.
+• Admin Panel: Admins can manage job postings, user roles, and oversee the job application process.
 
 # Tech Stack
-⦿ Frontend: React.js, React Router, Axios, Redux (for state management), Shadcn Components, Tailwind CSS
+• Frontend: React.js, React Router, Axios, Redux (for state management), Shadcn Components, Tailwind CSS
 
-⦿ Backend: Node.js, Express.js, JWT (for authentication), Bcrypt (for password hashing)
+• Backend: Node.js, Express.js, JWT (for authentication), Bcrypt (for password hashing)
 
-⦿ Database: MongoDB, Mongoose (for schema modeling)
+• Database: MongoDB, Mongoose (for schema modeling)
 
-⦿ Cloud Storage: Cloudinary (for storing resumes and profile images)
+• Cloud Storage: Cloudinary (for storing resumes and profile images)
 
-⦿ AI Integration: Custom AI model (integrated using Node.js API for resume generation)
+• AI Integration: Custom AI model (integrated using Node.js API for resume generation)
 
 Others: dotenv (for environment variables), Cors, Nodemailer (for email notifications)
 
