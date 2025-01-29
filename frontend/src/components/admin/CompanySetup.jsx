@@ -21,7 +21,7 @@ const CompanySetup = () => {
         location: "",
         file: null
     });
-    const {singleCompany} = useSelector(store=>store.company);
+    const { singleCompany } = useSelector(store => store.company);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -72,12 +72,12 @@ const CompanySetup = () => {
             location: singleCompany.location || "",
             file: singleCompany.file || null
         })
-    },[singleCompany]);
+    }, [singleCompany]);
 
     return (
         <div>
             <Navbar />
-            <div className='max-w-xl mx-auto my-10'>
+            <div className='max-w-xl mx-auto my-10 mt-[100px]'>
                 <form onSubmit={submitHandler}>
                     <div className='flex items-center gap-5 p-8'>
                         <Button onClick={() => navigate("/admin/companies")} variant="outline" className="flex items-center gap-2 text-gray-500 font-semibold">
